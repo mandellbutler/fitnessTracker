@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 7540;
 
-const User = require("./userModel.js"); //make sure path is correct
+// const User = require("./userModel.js"); //make sure path is correct
 
 const app = express();
 
@@ -20,3 +20,9 @@ app.use(express.static("public"));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethoddb", { useNewUrlParser: true }); //change local host db name
 
 // Routes 
+
+
+//Listener
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}!`);
+});

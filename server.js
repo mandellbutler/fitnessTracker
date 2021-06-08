@@ -1,5 +1,6 @@
+//================DEPENDENCIES==============
 // Add code to userModel.js to complete the model 18.1.13 REFERENCE
-
+const path = require('path');
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
@@ -8,18 +9,23 @@ const PORT = process.env.PORT || 7540;
 
 // const User = require("./userModel.js"); //make sure path is correct
 
-const db = require("./models");
 
 const app = express();
+const routes = require('./controllers');
 
+//MIDDLEWARE
 app.use(logger("dev"));
-
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethoddb", { useNewUrlParser: true }); //change local host db name
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/workout",
+  {
+    useNewUrlParser: true
+  }
+);
 
 // Create Data base & Routes======================================================
 // db.Workout.create({ name: "My Workout" })
@@ -51,7 +57,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethoddb"
 //     });
 // });
 
-// app.get("/workout", (req, res) => {
+// app.get("/api/workouts", (req, res) => {
 //   db.Workout.find({})
 //     .then(dbWorkout => {
 //       res.json(dbWorkout);
@@ -73,7 +79,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethoddb"
 // });
 
 //=======================================================================
-
+//ROUTES
+app.use(routes);
 
 //Listener
 app.listen(PORT, () => {

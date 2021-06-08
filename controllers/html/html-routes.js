@@ -13,6 +13,12 @@ router.get('/stats', (req, res) => {
 });
 
 
+router.get('/exercise', (req, res) => {
+  console.log(__dirname)
+  res.sendFile(path.join(__dirname, '../../public/views/exercise.html'))
+});
+
+
 
 
 module.exports = router;

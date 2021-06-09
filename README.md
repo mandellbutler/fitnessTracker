@@ -12,20 +12,23 @@ Fitness Tracker is an application, designed with the health conscious user in mi
 
 
 # Installation
-To install, simply follow the step below:
+For local installation:
 
-* clone the Github repository and add it to your local repo via your choice code-editing software (ie Visual Studio Code).
+  * clone the Github repository and add it to your local repo via your choice code-editing software (ie Visual Studio Code).
 
-* Open Integrated Terminal in VS Code and run the following commands:
+  * Open Integrated Terminal in VS Code and run the following commands:
 
-  * 'npm install'
+    * 'npm install'
 
-  * 'npm run seed'
+    * 'npm run seed'
 
-  * 'npm start' 
+    * 'npm start' 
 
-* Once the "App running on port 7540" confirmation has been recieved, visit "localhost: 7540" in the internet browser., 
+  * Once the "App running on port 7540" confirmation has been recieved, visit "localhost: 7540" in the internet browser. 
 
+For the deployed version of the application:
+
+[click the link] https://fittrack2021.herokuapp.com/
 
 
 

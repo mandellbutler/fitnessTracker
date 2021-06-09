@@ -12,7 +12,7 @@ Fitness Tracker is an application, designed with the health conscious user in mi
 
 
 # Installation
-For local installation:
+## For local installation:
 
   * clone the Github repository and add it to your local repo via your choice code-editing software (ie Visual Studio Code).
 
@@ -28,7 +28,7 @@ For local installation:
 
 
 
-For the deployed version of the application:
+## For the deployed version of the application:
 
   * [click the link] https://fittrack2021.herokuapp.com/
 

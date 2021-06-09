@@ -3,7 +3,7 @@ const db = require("../../models");
 
 
 //READ all of the existing workouts
-router.get("/api/workouts", (req, res) => {
+router.get("/", (req, res) => {
   db.Workout.find({})
     .sort({ date: -1 })
     .then(dbWorkout => {
@@ -14,7 +14,7 @@ router.get("/api/workouts", (req, res) => {
     });
 })
 //Get workout range data
-router.get("/api/workouts/range", (req, res) => {
+router.get("/range", (req, res) => {
   db.Workout.find({})
     .sort({ date: -1 })
     .then(dbWorkout => {
@@ -27,7 +27,7 @@ router.get("/api/workouts/range", (req, res) => {
 
 
 //CREATE New Workout
-router.post("/api/workouts", (req, res) => {
+router.post("/", (req, res) => {
   db.Workout.create(req.body)
     .then(dbWorkout => {
       console.log(dbWorkout);
@@ -39,7 +39,7 @@ router.post("/api/workouts", (req, res) => {
 });
 
 //UPDATE Workouts
-router.put("api/workouts/:id", ({ params, body }, res) => {
+router.put("/:id", ({ params, body }, res) => {
   db.Workout.findOneAndUpdate(
     {
       _id: params.id

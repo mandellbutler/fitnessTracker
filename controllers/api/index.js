@@ -6,7 +6,7 @@ const exerciseRoutes = require('./exerciseRoutes.js');
 
 
 
-router.use('/api/workouts', workoutRoutes);
+router.use('/workouts', workoutRoutes);
 router.use('/exercise', exerciseRoutes);
 
 

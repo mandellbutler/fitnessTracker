@@ -5,6 +5,10 @@ const Schema = mongoose.Schema;
 const WorkoutSchema = new Schema({
   exercises: [
     {
+      day: {
+        type: Date,
+        default: Date.now
+      },
       type: Schema.Types.ObjectId,
       ref: "Exercise"
     }
@@ -12,10 +16,6 @@ const WorkoutSchema = new Schema({
   totalDuration: {
     type: Number,
     default: 0
-  },
-  day: {
-    type: Date,
-    default: Date.now
   },
 });
 

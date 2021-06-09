@@ -26,9 +26,11 @@ For local installation:
 
   * Once the "App running on port 7540" confirmation has been recieved, visit "localhost: 7540" in the internet browser. 
 
+
+
 For the deployed version of the application:
 
-[click the link] https://fittrack2021.herokuapp.com/
+  * [click the link] https://fittrack2021.herokuapp.com/
 
 
 

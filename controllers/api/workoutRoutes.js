@@ -4,25 +4,44 @@ const db = require("../../models");
 
 //READ all of the existing workouts
 router.get("/", (req, res) => {
-  db.Workout.find({})
-    .sort({ date: -1 })
+  db.Workout.aggregate([
+    {
+      $set: {
+        totalDuration: {
+          $sum: '$exercises.duration'
+        }
+      }
+    }])
     .then(dbWorkout => {
+      console.log(dbWorkout)
       res.status(200).json(dbWorkout);
     })
     .catch(err => {
       res.status(400).json(err);
     });
 })
+
 //Get workout range data
-router.get("/range", (req, res) => {
-  db.Workout.find({})
-    .sort({ date: -1 })
-    .then(dbWorkout => {
-      res.status(200).json(dbWorkout);
+router.get('/range', (req, res) => {
+  db.Workout.aggregate([
+    {
+      $set: {
+        totalDuration: {
+          $sum: '$exercises.duration'
+        }
+      }
+    },
+    {
+      $sort: { day: -1 }
+    },
+    { $limit: 7 }
+  ])
+    .then((dbWorkout) => {
+      res.json(dbWorkout.reverse())
     })
-    .catch(err => {
-      res.status(400).json(err);
-    });
+    .catch((err) => {
+      res.json(err)
+    })
 })
 
 
@@ -39,22 +58,16 @@ router.post("/", (req, res) => {
 });
 
 //UPDATE Workouts
-router.put("/:id", ({ params, body }, res) => {
-  db.Workout.findOneAndUpdate(
-    {
-      _id: params.id
-    },
-    {
-      $push: { exercises: body }
-    },
-    {
-      upsert: true,
-      useFindandModify: false
-    },
-    updatedWorkout => {
-      res.json(updatedWorkout);
-    }
+router.put('/:id', (req, res) => {
+  db.Workout.updateOne(
+    { _id: req.params.id },
+    { $push: { exercises: req.body } }
   )
-});
+    .then((dbWorkout) => {
+      console.log(dbWorkout)
+      res.json(dbWorkout)
+    })
+    .catch((err) => res.json(err))
+})
 
 module.exports = router;

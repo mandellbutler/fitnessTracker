@@ -47,6 +47,8 @@ Thanks to the application's intuitive design, with a few simple clicks, the user
 
 * View the combined weight of multiple exercises from the past seven workouts on the `stats` page.
 
+<img src="public/images/dash.png" width="400">
+
 * View the total duration of each workout from the past seven workouts on the `stats` page.
 
 Add Workout Stats!
